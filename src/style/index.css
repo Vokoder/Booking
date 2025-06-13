@@ -1,3 +1,28 @@
 :root {
-  background-color: rgb(250, 250, 250);
+  background-color: #0078D2;
+  width: 100%;
+  height: 100%;
+  padding: 0;
+  margin: 0;
+  display: flex;
+}
+
+body {
+  width: 100%;
+  height: 100%;
+  padding: 0;
+  margin: 0;
+  overflow: hidden;
+}
+
+#root {
+  width: 100%;
+  height: 100%;
+  padding: 0;
+  margin: 0;
+}
+
+p, h1, h2, h3, h4, h5 {
+  margin: 0px;
+  padding: 0px;
 }
