@@ -29,5 +29,18 @@ module.exports = {
         react: {
             version: "detect",
         },
+        'import/resolver': {
+            alias: {
+                map: [
+                    ['@', './src'],
+                    ['@pages', './src/pages'],
+                    ['@api', './src/api'],
+                    ['@app', './src/app'],
+                    ['@components', './src/components'],
+                    ['@assets', './src/assets']
+                ],
+                extensions: ['.js', '.jsx', '.ts', '.tsx']
+            }
+        }
     },
 };

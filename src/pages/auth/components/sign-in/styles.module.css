@@ -1,0 +1,8 @@
+.alert {
+    background-color: rgba(235, 87, 87, 1);
+    color: rgba(255, 255, 255, 1);
+}
+
+.alertIcon {
+    color: white !important;
+}

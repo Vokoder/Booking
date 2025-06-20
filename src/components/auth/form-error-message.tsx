@@ -2,14 +2,16 @@ import { Typography } from 'antd'
 
 const { Text } = Typography
 
-const Message = (props:any) => {
+interface ErrorMessageProps {
+    message: string | undefined,
+}
+
+export const ErrorMessage:React.FC<ErrorMessageProps> = (props) => {
     return (
         props.message && (
-            <Text type='danger' className='formError'>
+            <Text type='danger'>
                 {props.message}
             </Text>
         )
     )
 }
-
-export default Message
