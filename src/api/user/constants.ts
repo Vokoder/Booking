@@ -1,1 +1,0 @@
-export const GET_PROFILE_FAILED = "Не удалось долучить данные аккаунта";

@@ -1,5 +1,5 @@
 import { Typography } from 'antd'
-import formStyles from './form.module.css'
+import formStyles from './form-imput-name.module.css'
 
 const { Title } = Typography
 

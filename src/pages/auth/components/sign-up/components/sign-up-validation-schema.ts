@@ -1,11 +1,12 @@
 import * as yup from 'yup';
-import { MAX_ABOUT_ME_LEN } from './constants';
+import { MAX_ABOUT_ME_LEN } from '@pages/auth/components/sign-up/constants';
+import { REQUIRED, INVALID_EMAIL, WEAK_PASSWORD } from '@constants/validation';
 
 export const signUpSchema = yup.object({
   firstName: yup
     .string()
     .trim()
-    .required('Обязательное поле'),
+    .required(REQUIRED),
 
   aboutMe: yup
     .string()
@@ -19,19 +20,19 @@ export const signUpSchema = yup.object({
     .transform((originalValue) =>
       originalValue ? originalValue.toLowerCase() : originalValue
     )
-    .required('Обязательное поле')
-    .email('Некорректный email адрес'),
+    .required(REQUIRED)
+    .email(INVALID_EMAIL),
 
   password: yup
     .string()
-    .required('Обязательное поле')
+    .required(REQUIRED)
     .matches(
       /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d).{8,}$/,
-      'Пароль не может быть короче 8 символов, должен содержать заглавные и строчные буквы, а также цифры'
+      WEAK_PASSWORD
     ),
 
   confirmPassword: yup
     .string()
-    .required('Обязательное поле')
+    .required(REQUIRED)
     .oneOf([yup.ref('password')], 'Пароли не совпадают'),
 }).required();

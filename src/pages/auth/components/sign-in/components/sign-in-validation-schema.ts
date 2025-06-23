@@ -1,4 +1,5 @@
 import * as yup from 'yup';
+import { REQUIRED, INVALID_EMAIL } from '@constants/validation';
 
 export const signInSchema = yup.object({
   email: yup
@@ -6,10 +7,10 @@ export const signInSchema = yup.object({
     .transform((originalValue) =>
       originalValue ? originalValue.toLowerCase() : originalValue
     )
-    .required('Обязательное поле')
-    .email('Некорректный email адрес'),
+    .required(REQUIRED)
+    .email(INVALID_EMAIL),
 
   password: yup
     .string()
-    .required('Обязательное поле')
+    .required(REQUIRED)
 }).required();

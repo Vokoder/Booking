@@ -1,24 +1,16 @@
-import styles from './auth-page.module.css'
-import { Row, Col, Typography } from "antd";
-import { useState } from 'react';
-import * as constants from "./constants";
-import { Outlet, useNavigate } from "react-router"
-import * as navConstants from "../../app/constants"
+import styles from './auth-layout.module.css'
+import { Row, Col } from "antd";
+import { type PropsWithChildren, type ReactNode } from 'react';
+import { AlertContext } from '@/app/alert';
+import { useContext } from 'react';
+import { AlertMessage } from '@/app/alert';
 
-const { Text } = Typography
-
-interface AuthPageProps {
-  startWithSignUp:boolean,
+type AuthLayoutProps = {
+  footer: ReactNode,
 }
 
-export const AuthLayout = (props:AuthPageProps) => {
-  const [signUp, setSignUp] = useState(props.startWithSignUp)
-  const navigate = useNavigate()
-
-  const SwitchAuthMethod = () => {
-    navigate(signUp?(navConstants.SIGN_IN_URL):(navConstants.SIGN_UP_URL))
-    setSignUp(!signUp)
-  }
+export const AuthLayout = ({ footer, children }: PropsWithChildren<AuthLayoutProps>) => {
+  const { alert } = useContext(AlertContext)
   return (
     <>
       <Row
@@ -36,26 +28,16 @@ export const AuthLayout = (props:AuthPageProps) => {
         >
           <Row className={styles.formBg}>
             <Col span={24}>
-              <Outlet />
+              {children}
             </Col>
             <Col span={24}>
               <Row justify="center" align="middle">
-                <Text className={styles.authorisationMethodText}>
-                  {signUp ? constants.USE_SIGN_IN_TEXT : constants.USE_SIGN_UP_TEXT}
-                  {' '}
-                  <button
-                    onClick={SwitchAuthMethod}
-                    className={styles.authorisationMethodButton}
-                  >
-                    <b>
-                      {signUp ? constants.USE_SIGN_IN_BUTTON : constants.USE_SIGN_UP_BUTTON}
-                    </b>
-                  </button>
-                </Text>
+                {footer}
               </Row>
             </Col>
           </Row>
         </Col>
+        {alert && <AlertMessage />}
       </Row>
     </>
   )

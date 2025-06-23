@@ -1,21 +1,20 @@
-import { Controller, type Control, type FieldValues, type Path } from 'react-hook-form'
-import type { InputTypes } from '../../pages/auth/components/form-types'
-import { FormInputName } from './form-input-name'
-import { ErrorMessage } from './form-error-message'
+import { Controller, type Control, type ControllerFieldState, type ControllerRenderProps, type FieldValues, type Path } from 'react-hook-form'
+import { FormInputName } from "@/components/form/form-input-name"
+import { ErrorMessage } from '@/components/form/form-error-message'
 import { Col, Row, Typography } from 'antd'
-import { InputField } from './input-field'
-import { TextAreaField } from './textarea-field'
+import type { ReactNode } from 'react'
 
 interface FormFieldProps<T extends FieldValues> {
     control: Control<T>;
     controllerName: Path<T>;
     label: string,
-    placeholder: string,
     required: boolean,
     counter?: number,
     maxInputLength?: number,
-    isPassword?: boolean,
-    type: keyof InputTypes,
+    children: (params: {
+        field: ControllerRenderProps<T, Path<T>>,
+        fieldState: ControllerFieldState
+    }) => ReactNode,
 }
 
 const { Text } = Typography
@@ -27,7 +26,7 @@ export const FormField = <T extends FieldValues>(props: FormFieldProps<T>) => {
             control={props.control}
             render={({
                 field,
-                fieldState: { error },
+                fieldState,
             }) => (
                 <>
                     <Row justify='space-between' align='middle'>
@@ -51,25 +50,12 @@ export const FormField = <T extends FieldValues>(props: FormFieldProps<T>) => {
 
                     <Row justify='start'>
                         {
-                            props.type === "input" ? (
-                                <InputField
-                                    field={field}
-                                    placeholder={props.placeholder}
-                                    isPassword={props.isPassword !== undefined ? props.isPassword : false}
-                                    error={error}
-                                />
-                            ) : (
-                                <TextAreaField
-                                    field={field}
-                                    placeholder={props.placeholder}
-                                    maxInputLength={props.maxInputLength ? props.maxInputLength : undefined}
-                                />
-                            )
+                            props.children({field, fieldState})
                         }
                     </Row>
 
                     <Row justify='start'>
-                        <ErrorMessage message={error?.message} />
+                        <ErrorMessage message={fieldState.error?.message} />
                     </Row>
                 </>
             )}

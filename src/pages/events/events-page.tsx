@@ -1,6 +1,6 @@
-import { useUser } from "../../api/user/useUser"
+import { useUser } from "@/app/auth/use-user"
 import { useContext } from "react"
-import { UserContext } from "../../app/user-context"
+import { UserContext } from "@/app/auth/user-context"
 
 export const EventsPage = () => {
   const { logOut } = useUser()

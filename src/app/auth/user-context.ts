@@ -1,5 +1,5 @@
 import { createContext } from 'react'
-import type { UserData } from '../api/user/user-types'
+import type { UserData } from '@api/user'
 
 type AuthContextType = {
     user: UserData | null,

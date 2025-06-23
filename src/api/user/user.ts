@@ -1,8 +1,7 @@
 import { doc, getDoc } from "firebase/firestore";
-import { firebaseErrorToString, firestore } from "../firebase/firebase.api";
-import type { UserData } from "./user-types";
-import * as constants from "./constants";
-import { FirebaseError } from "firebase/app";
+import { firestore } from "@firebaseApi/firebase.api";
+import type { UserData } from "./user.types";
+import * as validation from "@constants/validation";
 
 export const getUserProfile = async (uid: string) => {
     try {
@@ -19,15 +18,13 @@ export const getUserProfile = async (uid: string) => {
             };
             return userData
         } else {
-            throw new Error(constants.GET_PROFILE_FAILED)
+            throw new Error(validation.GET_PROFILE_FAILED)
         }
     } catch (e) {
-        if (e instanceof FirebaseError) {
-            throw new Error(firebaseErrorToString(e))
-        } else if (e instanceof Error) {
+        if (e instanceof Error) {
             throw e
         } else {
-            throw new Error(constants.GET_PROFILE_FAILED)
+            throw new Error(validation.GET_PROFILE_FAILED)
         }
     }
 }

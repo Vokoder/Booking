@@ -1,17 +1,14 @@
 import { createUserWithEmailAndPassword, updateProfile } from "firebase/auth"
-import type { SignUp } from "../../pages/auth/components/form-types"
-import { auth, firebaseErrorToString, firestore } from "../firebase/firebase.api"
-import { FirebaseError } from "firebase/app"
+import type { SignUp } from "@/pages/auth/components/form.types"
+import { auth, firestore } from "@firebaseApi/firebase.api"
 import { doc, setDoc } from "firebase/firestore"
-import type { UserData } from "../user/user-types"
+import type { UserData } from "@/api/user"
 
 export const signUp = async (data: SignUp) => {
     try {
         await createUserWithEmailAndPassword(auth, data.email, data.password)
     } catch (e: unknown) {
-        if (e instanceof FirebaseError) {
-            throw new Error(firebaseErrorToString(e))
-        } else if (e instanceof Error) {
+        if (e instanceof Error) {
             throw e
         } else {
             throw new Error('Ошибка создания аккаунта')

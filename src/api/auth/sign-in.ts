@@ -1,17 +1,14 @@
 import { signInWithEmailAndPassword } from 'firebase/auth'
-import { auth, firebaseErrorToString } from '../firebase/firebase.api'
+import { auth } from '@firebaseApi/firebase.api'
 import { getUserProfile } from '../user/user'
-import { type SignIn } from '../../pages/auth/components/form-types'
-import { type UserData } from '../user/user-types'
-import { FirebaseError } from 'firebase/app';
+import { type SignIn } from '@/pages/auth/components/form.types'
+import { type UserData } from '@/api/user'
 
 export const signIn = async (data: SignIn) => {
     try {
         await signInWithEmailAndPassword(auth, data.email, data.password)
     } catch (e: unknown) {
-        if (e instanceof FirebaseError) {
-            throw new Error(firebaseErrorToString(e))
-        } else if (e instanceof Error) {
+        if (e instanceof Error) {
             throw e
         } else {
             throw new Error("Ошибка авторизации")

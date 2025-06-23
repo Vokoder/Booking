@@ -1,9 +1,9 @@
 import { Typography } from 'antd'
-import styles from './styles.module.css'
+import styles from './sign-up-header.module.css'
 
 const { Title, Text } = Typography
 
-const SignUpHeader = () => {
+export const SignUpHeader = () => {
     return <>
         <Title
             level={4}
@@ -19,5 +19,3 @@ const SignUpHeader = () => {
         </Text>
     </>
 }
-
-export default SignUpHeader

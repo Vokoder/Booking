@@ -10,8 +10,3 @@ export interface SignIn {
     email: string,
     password: string,
 }
-
-export interface InputTypes {
-    input: "input",
-    textarea: "textarea",
-}
