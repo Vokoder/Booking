@@ -4,7 +4,7 @@ import type { SignIn } from './sign-in-types'
 import { yupResolver } from '@hookform/resolvers/yup'
 import { signIn } from '@api/auth'
 import { Alert, Col, Row, Typography } from 'antd'
-import { SubmitButton } from '@components/form/submit-button'
+import { SubmitButton } from '@components/form'
 import { signInSchema } from './sign-in-validation-schema'
 import styles from '@pages/sign-in/sign-in.module.css'
 import { WarningFilled } from '@ant-design/icons'
@@ -14,7 +14,7 @@ import { DEFAULT_URL, SIGN_UP_URL } from '@constants/routes'
 import { FirebaseError } from 'firebase/app'
 import { AUTH_INVALID_CREDENTIAL } from '@constants/error-codes'
 import { AuthLayout } from '@layouts/auth-layout'
-import { Footer } from '@components/footer-text/footer'
+import { FooterText } from '@components/footer-text'
 import { USE_SIGN_UP_TEXT, USE_SIGN_UP_BUTTON, AUTH_ERROR } from './sign-in.constants'
 import { InputField, InputPasswordField } from '@components/form'
 import { INVALID_CREDENTIAL } from '@constants/validation'
@@ -60,7 +60,7 @@ export const SignInForm = () => {
   }
 
   return (
-    <AuthLayout footer={<Footer text={USE_SIGN_UP_TEXT} subText={USE_SIGN_UP_BUTTON} onClick={handleClick} />}>
+    <AuthLayout footer={<FooterText text={USE_SIGN_UP_TEXT} subText={USE_SIGN_UP_BUTTON} onClick={handleClick} />}>
       <form onSubmit={handleSubmit(onSubmit)}>
         <Row gutter={[0, 32]}>
           <Col span={24}>

@@ -6,11 +6,10 @@ import {
   type FieldValues,
   type Path,
 } from 'react-hook-form'
-import { FormInputName } from '@/components/form/form-input-name'
+import { FormInputName } from '@/components/form/form-input-name/form-input-name'
 import { ErrorMessage } from '@/components/form/form-error-message'
 import { Col, Row, Typography } from 'antd'
 import type { ReactNode } from 'react'
-import { MISSING_ELEMENT } from '@/constants/errors'
 
 export interface FormFieldProps<T extends FieldValues> {
   control: Control<T>
@@ -19,7 +18,7 @@ export interface FormFieldProps<T extends FieldValues> {
   required: boolean
   counter?: number
   maxLength?: number
-  children?: (params: { field: ControllerRenderProps<T, Path<T>>; fieldState: ControllerFieldState }) => ReactNode
+  children: (params: { field: ControllerRenderProps<T, Path<T>>; fieldState: ControllerFieldState }) => ReactNode
 }
 
 const { Text } = Typography
@@ -44,7 +43,7 @@ export const FormField = <T extends FieldValues>(props: FormFieldProps<T>) => {
             )}
           </Row>
 
-          <Row justify="start">{props.children ? props.children({ field, fieldState }) : MISSING_ELEMENT}</Row>
+          <Row justify="start">{props.children({ field, fieldState })}</Row>
 
           <Row justify="start">
             <ErrorMessage message={fieldState.error?.message} />

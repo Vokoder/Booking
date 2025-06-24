@@ -6,7 +6,7 @@ import { type SignUp } from './sign-up.types'
 import { yupResolver } from '@hookform/resolvers/yup'
 import { signUpSchema } from './sign-up-validation-schema'
 import { MAX_ABOUT_ME_LEN, USE_SIGN_IN_TEXT, USE_SIGN_IN_BUTTON } from './sign-up.constants'
-import { SubmitButton } from '@components/form/submit-button'
+import { SubmitButton } from '@components/form'
 import { useUser } from '@app/auth'
 import { DEFAULT_URL, SIGN_IN_URL } from '@constants/routes'
 import { useNavigate } from 'react-router'
@@ -14,7 +14,7 @@ import { FirebaseError } from 'firebase/app'
 import * as codes from '@constants/error-codes'
 import * as validation from '@constants/validation'
 import { AuthLayout } from '@layouts/auth-layout'
-import { Footer } from '@/components/footer-text/footer'
+import { FooterText } from '@/components/footer-text'
 import { InputField, InputPasswordField, TextAreaField } from '@components/form'
 import { useAlert } from '@app/alert'
 import { AUTH_ERROR } from './sign-up.constants'
@@ -60,7 +60,7 @@ export const SignUpForm = () => {
   }
 
   return (
-    <AuthLayout footer={<Footer text={USE_SIGN_IN_TEXT} subText={USE_SIGN_IN_BUTTON} onClick={handleClick} />}>
+    <AuthLayout footer={<FooterText text={USE_SIGN_IN_TEXT} subText={USE_SIGN_IN_BUTTON} onClick={handleClick} />}>
       <form onSubmit={handleSubmit(onSubmit)}>
         <Row gutter={[0, 32]}>
           <Col span={24}>

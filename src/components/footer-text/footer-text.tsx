@@ -9,7 +9,7 @@ type FooterProps = {
   onClick: () => void
 }
 
-export const Footer = ({ text, subText, onClick }: FooterProps) => {
+export const FooterText = ({ text, subText, onClick }: FooterProps) => {
   return (
     <Text className={styles.authorisationMethodText}>
       {text + ' '}
