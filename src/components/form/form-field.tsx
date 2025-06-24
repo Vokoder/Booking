@@ -10,15 +10,16 @@ import { FormInputName } from '@/components/form/form-input-name'
 import { ErrorMessage } from '@/components/form/form-error-message'
 import { Col, Row, Typography } from 'antd'
 import type { ReactNode } from 'react'
+import { MISSING_ELEMENT } from '@/constants/errors'
 
-interface FormFieldProps<T extends FieldValues> {
+export interface FormFieldProps<T extends FieldValues> {
   control: Control<T>
   controllerName: Path<T>
   label: string
   required: boolean
   counter?: number
-  maxInputLength?: number
-  children: (params: { field: ControllerRenderProps<T, Path<T>>; fieldState: ControllerFieldState }) => ReactNode
+  maxLength?: number
+  children?: (params: { field: ControllerRenderProps<T, Path<T>>; fieldState: ControllerFieldState }) => ReactNode
 }
 
 const { Text } = Typography
@@ -34,16 +35,16 @@ export const FormField = <T extends FieldValues>(props: FormFieldProps<T>) => {
             <Col flex="auto">
               <FormInputName name={props.label} required={props.required} />
             </Col>
-            {props.counter !== undefined && props.maxInputLength !== undefined && (
+            {props.counter !== undefined && props.maxLength !== undefined && (
               <Col>
                 <Text type="secondary">
-                  {props.counter}/{props.maxInputLength}
+                  {props.counter}/{props.maxLength}
                 </Text>
               </Col>
             )}
           </Row>
 
-          <Row justify="start">{props.children({ field, fieldState })}</Row>
+          <Row justify="start">{props.children ? props.children({ field, fieldState }) : MISSING_ELEMENT}</Row>
 
           <Row justify="start">
             <ErrorMessage message={fieldState.error?.message} />

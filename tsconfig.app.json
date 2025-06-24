@@ -31,7 +31,8 @@
       "@components/*": ["src/components/*"],
       "@assets/*": ["src/assets/*"],
       "@constants/*": ["src/constants/*"],
-      "@firebaseApi/*": ["src/api/firebase/*"]
+      "@firebaseApi/*": ["src/api/firebase/*"],
+      "@layouts/*": ["src/layouts/*"]
     }
   },
   "include": ["src"]

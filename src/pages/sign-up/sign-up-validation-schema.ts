@@ -1,5 +1,5 @@
 import * as yup from 'yup'
-import { MAX_ABOUT_ME_LEN } from '@pages/auth/components/sign-up/constants'
+import { MAX_ABOUT_ME_LEN } from '@/pages/sign-up/sign-up.constants'
 import { REQUIRED, INVALID_EMAIL, WEAK_PASSWORD } from '@constants/validation'
 
 export const signUpSchema = yup

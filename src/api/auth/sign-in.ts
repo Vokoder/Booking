@@ -1,7 +1,7 @@
 import { signInWithEmailAndPassword } from 'firebase/auth'
 import { auth } from '@firebaseApi/firebase.api'
 import { getUserProfile } from '../user/user'
-import { type SignIn } from '@/pages/auth/components/form.types'
+import { type SignIn } from '@pages/sign-in'
 import { type UserData } from '@/api/user'
 
 export const signIn = async (data: SignIn) => {

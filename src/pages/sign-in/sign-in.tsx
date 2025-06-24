@@ -1,24 +1,24 @@
 import { useState } from 'react'
 import { useForm, type SubmitHandler } from 'react-hook-form'
-import type { SignIn } from '@/pages/auth/components/form.types'
+import type { SignIn } from './sign-in-types'
 import { yupResolver } from '@hookform/resolvers/yup'
 import { signIn } from '@api/auth'
 import { Alert, Col, Row, Typography } from 'antd'
-import { SubmitButton } from '@/components/form/submit-button'
-import { signInSchema } from '@pages/auth/components/sign-in'
-import styles from '@pages/auth/components/sign-in/sign-in-form.module.css'
+import { SubmitButton } from '@components/form/submit-button'
+import { signInSchema } from './sign-in-validation-schema'
+import styles from '@pages/sign-in/sign-in.module.css'
 import { WarningFilled } from '@ant-design/icons'
-import { useUser } from '@/app/auth'
+import { useUser } from '@app/auth'
 import { useNavigate } from 'react-router'
 import { DEFAULT_URL, SIGN_UP_URL } from '@constants/routes'
 import { FirebaseError } from 'firebase/app'
-import { AUTH_INVALID_CREDENTIAL } from '@/constants/error-codes'
-import { AuthLayout } from '@pages/auth/auth-layout'
-import { Footer } from '@pages/auth/components/footer'
-import { USE_SIGN_UP_TEXT, USE_SIGN_UP_BUTTON, AUTH_ERROR } from '@pages/auth/components/sign-in'
-import { InputField, InputPasswordField } from '@/components/form/input-field'
-import { INVALID_CREDENTIAL } from '@/constants/validation'
-import { useAlert } from '@/app/alert'
+import { AUTH_INVALID_CREDENTIAL } from '@constants/error-codes'
+import { AuthLayout } from '@layouts/auth-layout'
+import { Footer } from '@components/footer-text/footer'
+import { USE_SIGN_UP_TEXT, USE_SIGN_UP_BUTTON, AUTH_ERROR } from './sign-in.constants'
+import { InputField, InputPasswordField } from '@components/form'
+import { INVALID_CREDENTIAL } from '@constants/validation'
+import { useAlert } from '@app/alert'
 
 const { Title } = Typography
 
@@ -97,7 +97,6 @@ export const SignInForm = () => {
                   label="Пароль"
                   placeholder="Введите пароль"
                   required={true}
-                  isPassword={true}
                   type="input"
                 />
               </Col>

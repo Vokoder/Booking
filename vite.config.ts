@@ -15,6 +15,7 @@ export default defineConfig({
       '@assets': path.resolve(__dirname, './src/assets'),
       '@constants': path.resolve(__dirname, './src/constants'),
       '@firebaseApi': path.resolve(__dirname, './src/api/firebase'),
+      '@layouts': path.resolve(__dirname, './src/layouts'),
     },
   },
 })

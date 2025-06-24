@@ -1,23 +1,23 @@
 import { useForm, type SubmitHandler, useWatch } from 'react-hook-form'
 import { Row, Col } from 'antd'
-import { SignUpHeader } from '@pages/auth/components/sign-up'
+import { SignUpHeader } from './components/sign-up-header'
 import { signUp } from '@api/auth'
-import { type SignUp } from '@/pages/auth/components/form.types'
+import { type SignUp } from './sign-up.types'
 import { yupResolver } from '@hookform/resolvers/yup'
-import { signUpSchema } from '@pages/auth/components/sign-up'
-import { MAX_ABOUT_ME_LEN, USE_SIGN_IN_TEXT, USE_SIGN_IN_BUTTON } from '@pages/auth/components/sign-up'
-import { SubmitButton } from '@/components/form/submit-button'
-import { useUser } from '@/app/auth'
+import { signUpSchema } from './sign-up-validation-schema'
+import { MAX_ABOUT_ME_LEN, USE_SIGN_IN_TEXT, USE_SIGN_IN_BUTTON } from './sign-up.constants'
+import { SubmitButton } from '@components/form/submit-button'
+import { useUser } from '@app/auth'
 import { DEFAULT_URL, SIGN_IN_URL } from '@constants/routes'
 import { useNavigate } from 'react-router'
 import { FirebaseError } from 'firebase/app'
-import * as codes from '@/constants/error-codes'
-import * as validation from '@/constants/validation'
-import { AuthLayout } from '@pages/auth'
-import { Footer } from '@pages/auth/components/footer'
-import { InputField, InputPasswordField, TextAreaField } from '@/components/form/input-field'
-import { useAlert } from '@/app/alert'
-import { AUTH_ERROR } from './constants'
+import * as codes from '@constants/error-codes'
+import * as validation from '@constants/validation'
+import { AuthLayout } from '@layouts/auth-layout'
+import { Footer } from '@/components/footer-text/footer'
+import { InputField, InputPasswordField, TextAreaField } from '@components/form'
+import { useAlert } from '@app/alert'
+import { AUTH_ERROR } from './sign-up.constants'
 
 export const SignUpForm = () => {
   const { logIn } = useUser()
@@ -86,7 +86,7 @@ export const SignUpForm = () => {
                   placeholder="Расскажите о себе"
                   required={false}
                   counter={aboutMeLen}
-                  maxInputLength={MAX_ABOUT_ME_LEN}
+                  maxLength={MAX_ABOUT_ME_LEN}
                 />
               </Col>
 
@@ -107,7 +107,6 @@ export const SignUpForm = () => {
                   label="Пароль"
                   placeholder="Введите пароль"
                   required={true}
-                  isPassword={true}
                 />
               </Col>
 
@@ -118,7 +117,6 @@ export const SignUpForm = () => {
                   label="Подтвердите пароль"
                   placeholder="Введите пароль"
                   required={true}
-                  isPassword={true}
                 />
               </Col>
             </Row>

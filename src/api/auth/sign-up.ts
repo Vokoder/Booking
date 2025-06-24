@@ -1,5 +1,5 @@
 import { createUserWithEmailAndPassword, updateProfile } from 'firebase/auth'
-import type { SignUp } from '@/pages/auth/components/form.types'
+import type { SignUp } from '@pages/sign-up'
 import { auth, firestore } from '@firebaseApi/firebase.api'
 import { doc, setDoc } from 'firebase/firestore'
 import type { UserData } from '@/api/user'
