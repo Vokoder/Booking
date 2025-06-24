@@ -9,9 +9,5 @@ export const UserContextProvider = ({ children }: { children: ReactNode }) => {
     setUser: setUser,
   }
 
-  return (
-    <UserContext.Provider value={value}>
-      {children}
-    </UserContext.Provider>
-  )
+  return <UserContext.Provider value={value}>{children}</UserContext.Provider>
 }

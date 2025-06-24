@@ -3,12 +3,14 @@
   "private": true,
   "version": "0.0.0",
   "type": "module",
+
   "scripts": {
     "dev": "vite",
     "build": "tsc -b && vite build",
     "lint": "eslint ./src",
     "lint:fix": "eslint ./src --fix",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "format": "prettier --write src/**/*.ts{,x}"
   },
   "dependencies": {
     "@ant-design/v5-patch-for-react-19": "^1.0.3",
