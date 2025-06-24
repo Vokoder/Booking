@@ -8,6 +8,14 @@ export default defineConfig({
   resolve: {
     alias: {
       '@': path.resolve(__dirname, './src'),
+      '@pages': path.resolve(__dirname, './src/pages'),
+      '@api': path.resolve(__dirname, './src/api'),
+      '@app': path.resolve(__dirname, './src/app'),
+      '@components': path.resolve(__dirname, './src/components'),
+      '@assets': path.resolve(__dirname, './src/assets'),
+      '@constants': path.resolve(__dirname, './src/constants'),
+      '@firebaseApi': path.resolve(__dirname, './src/api/firebase'),
+      '@layouts': path.resolve(__dirname, './src/layouts'),
     },
   },
 })

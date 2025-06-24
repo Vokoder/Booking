@@ -1,0 +1,7 @@
+export const EMAIL_ALREDY_IN_USE = 'Пользователь с таким email уже существует'
+export const INVALID_EMAIL = 'Неверный формат email'
+export const WEAK_PASSWORD =
+  'Пароль не может быть короче 8 символов, должен содержать заглавные и строчные буквы, а также цифры'
+export const INVALID_CREDENTIAL = 'Неверный логин или пароль'
+export const GET_PROFILE_FAILED = 'Не удалось долучить данные аккаунта'
+export const REQUIRED = 'Обязательное поле'
