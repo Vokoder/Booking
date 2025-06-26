@@ -1,1 +1,1 @@
-export * from "./events-page-profile"
+export * from './events-page-profile'

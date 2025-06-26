@@ -1,0 +1,11 @@
+.titleSearch {
+  width: 30vw;
+}
+
+.dropDownFilters {
+  width: 15vw;
+}
+
+.radioFilter {
+  width: max-content;
+}

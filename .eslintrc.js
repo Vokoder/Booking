@@ -40,7 +40,8 @@ module.exports = {
           ['@assets', './src/assets'],
           ['@constants', 'src/constants'],
           ['@firebaseApi', 'src/api/firebase'],
-          ['@layouts', 'src/layouts']
+          ['@layouts', 'src/layouts'],
+          ['@modules', 'src/modules']
         ],
         extensions: ['.js', '.jsx', '.ts', '.tsx']
       }

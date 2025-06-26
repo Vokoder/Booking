@@ -16,6 +16,7 @@ export default defineConfig({
       '@constants': path.resolve(__dirname, './src/constants'),
       '@firebaseApi': path.resolve(__dirname, './src/api/firebase'),
       '@layouts': path.resolve(__dirname, './src/layouts'),
+      '@modules': path.resolve(__dirname, './src/modules'),
     },
   },
 })
