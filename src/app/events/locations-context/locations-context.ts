@@ -1,5 +1,5 @@
 import { createContext } from 'react'
-import type { Location } from '@/api/events/locations'
+import type { Location } from '@/api/locations'
 
 type LocationsContextType = {
   locations: Location[] | null

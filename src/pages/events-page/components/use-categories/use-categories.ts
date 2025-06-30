@@ -1,32 +1,27 @@
-import { type Category } from "@/api/events/categiries";
-import { CategoriesContext } from "@/app/events";
-import { useContext } from "react";
+import { type Category } from '@/api/categiries'
+import { CategoriesContext } from '@/app/events'
+import { useContext } from 'react'
 
 export const UseCategories = () => {
-  const { categories, setCategories } = useContext(CategoriesContext)
+  const { categories } = useContext(CategoriesContext)
 
   const getCategoryById = (id: number) => {
     if (categories) {
-      const category = categories.find(c => c.id === id)
+      const category = categories.find((c) => c.value === id)
       return category
     }
+
     const catchCategory: Category = {
-      id: 0,
-      name: 'Не удалось найти',
+      value: 0,
+      label: 'Не удалось найти',
       color: 'red',
     }
     return catchCategory
   }
 
   const getCategories = () => {
-    return categories
+    return categories ? categories : undefined
   }
 
-  const getCategoiesOption = () => {
-    if (categories) {
-      return categories.map
-    }
-  }
-
-  return {getCategoryById, getCategories, getCategoiesOption}
+  return { getCategoryById, getCategories }
 }

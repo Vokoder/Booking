@@ -1,6 +1,6 @@
 import { useState, type ReactNode } from 'react'
 import { LocationsContext } from './locations-context'
-import { type Location } from '@/api/events/locations'
+import { type Location } from '@/api/locations'
 
 export const LocationsContextProvider = ({ children }: { children: ReactNode }) => {
   const [locations, setLocations] = useState<Location[] | null>(null)

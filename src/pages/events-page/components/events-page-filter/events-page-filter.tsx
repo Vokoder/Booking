@@ -1,20 +1,21 @@
 import { Button, Col, Row } from 'antd'
-import type { Filter } from './events-page-filter.types'
+import type { AuthorOption, Filter } from './events-page-filter.types'
 import { useForm, useWatch } from 'react-hook-form'
 import { PlusOutlined, SearchOutlined } from '@ant-design/icons'
 import styles from './events-page-filter.module.css'
 import { InputField, SelectField, RadioField, DateField } from '@/components/form'
 import { useEffect } from 'react'
-import { authors, locations } from '../filter-inputs-options'
 import { EVENT_TYPES, DEFAULT_EVENT_TYPE } from './events-page-filter.constants'
 import { UseCategories } from '../use-categories'
+import { UseLocations } from '../use-locations'
+import { UseAuthors } from '../use-authors'
 
 interface EventsPageFilterProps {
   setFilter: (props: Filter) => void
 }
 
 const createEventHandler = () => {
-  alert('create event') //TODO
+  alert('Извините, функция пока не доступна')
 }
 
 const submitHandler = (e: React.FormEvent<HTMLFormElement>) => {
@@ -25,25 +26,28 @@ export const EventsPageFilter = ({ setFilter }: EventsPageFilterProps) => {
   const { control } = useForm<Filter>()
   const watch = useWatch({ control })
   const { getCategories } = UseCategories()
+  const { getLocations } = UseLocations()
+  const { getAuthors } = UseAuthors()
+  const authors: AuthorOption[] | undefined = getAuthors()
 
   useEffect(() => {
     const currentFilter: Filter = {
       title: watch.title,
-      authorName: watch.authorName,
+      author: watch.author,
       location: watch.location,
       category: watch.category,
       date: watch.date,
       eventType: watch.eventType ? watch.eventType : 'upcoming', //TODO to delete
     }
     setFilter(currentFilter)
-  }, [watch.title, watch.authorName, watch.location, watch.category, watch.date, watch.eventType, setFilter])
+  }, [watch.title, watch.author, watch.location, watch.category, watch.date, watch.eventType, setFilter])
 
   return (
     <form onSubmit={submitHandler}>
       <Row gutter={[16, 32]}>
         <Col span={24}>
           <InputField<Filter>
-            placeholder="123"
+            placeholder="Название"
             prefix={<SearchOutlined />}
             className={styles.titleSearch}
             control={control}
@@ -56,9 +60,9 @@ export const EventsPageFilter = ({ setFilter }: EventsPageFilterProps) => {
             <Col>
               <SelectField<Filter>
                 control={control}
-                controllerName="authorName"
+                controllerName="author"
                 required={false}
-                placeholder="234"
+                placeholder="Имя автора"
                 options={authors}
                 label="Автор"
                 className={styles.dropDownFilters}
@@ -70,8 +74,8 @@ export const EventsPageFilter = ({ setFilter }: EventsPageFilterProps) => {
                 control={control}
                 controllerName="location"
                 required={false}
-                placeholder="345"
-                options={locations}
+                placeholder="Название локации"
+                options={getLocations()}
                 label="Локация"
                 className={styles.dropDownFilters}
                 showSearch
@@ -82,15 +86,22 @@ export const EventsPageFilter = ({ setFilter }: EventsPageFilterProps) => {
                 control={control}
                 controllerName="category"
                 required={false}
-                placeholder="456"
-                options={categiries}
+                placeholder="Название категории"
+                options={getCategories()}
                 label="Категория"
                 className={styles.dropDownFilters}
                 showSearch
               />
             </Col>
             <Col>
-              <DateField<Filter> control={control} controllerName="date" required={false} label="Дата" />
+              <DateField<Filter>
+                control={control}
+                controllerName="date"
+                required={false}
+                label="Дата"
+                placeholder="Выберите дату"
+                className={styles.dropDownFilters}
+              />
             </Col>
           </Row>
         </Col>

@@ -1,25 +1,26 @@
-import type { Location } from "@/api/events";
-import { LocationsContext } from "@/app/events";
-import { useContext } from "react";
+import type { Location } from '@/api/locations'
+import { LocationsContext } from '@/app/events'
+import { useContext } from 'react'
 
 export const UseLocations = () => {
-  const { locations, setLocations } = useContext(LocationsContext)
+  const { locations } = useContext(LocationsContext)
 
   const getLocationById = (id: number) => {
     if (locations) {
-      const location = locations.find(l => l.id === id)
+      const location = locations.find((l) => l.value === id)
       return location
     }
+
     const catchLocation: Location = {
-      id: 0,
-      name: 'Не удалось найти',
+      value: 0,
+      label: 'Не удалось найти',
     }
     return catchLocation
   }
 
   const getLocations = () => {
-    return locations
+    return locations ? locations : undefined
   }
 
-  return {getLocationById, getLocations}
+  return { getLocationById, getLocations }
 }

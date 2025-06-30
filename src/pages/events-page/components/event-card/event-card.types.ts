@@ -1,1 +1,0 @@
-export type CardType = 'my' | 'book' | 'cancel book'

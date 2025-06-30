@@ -1,4 +1,4 @@
-import type { Category } from '@/api/events/categiries'
+import type { Category } from '@/api/categiries'
 import { useState, type ReactNode } from 'react'
 import { CategoriesContext } from './categories-context'
 

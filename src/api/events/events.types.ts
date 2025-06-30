@@ -1,11 +1,16 @@
 export interface Event {
-  id: number
+  id: string
   title: string
   description: string
   locationId: number
   categoryId: number
   date: Date
-  authorId: string
+  author: Author
   imageUrl: string
   userIds: string[]
+}
+
+export interface Author {
+  id: string
+  name: string
 }

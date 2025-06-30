@@ -5,6 +5,7 @@ import { UserContext, useUser } from '@/app/auth'
 import { EventsPageEvents, EventsPageProfile } from './components'
 import { useContext } from 'react'
 import { CategoryContextProvider, EventsContextProvider, LocationsContextProvider } from '@/app/events'
+import { AuthorsContextProvider } from '@/app/events/authors-context'
 
 export const EventsPage = () => {
   const { logOut } = useUser()
@@ -41,26 +42,28 @@ export const EventsPage = () => {
     <CategoryContextProvider>
       <LocationsContextProvider>
         <EventsContextProvider>
-          <Row className={styles.eventsPageBg}>
-            <Col span={24}>
-              <Tabs
-                defaultActiveKey="1"
-                items={tabsItems}
-                tabBarExtraContent={
-                  <Dropdown menu={dropDownMenu}>
-                    <Button>
-                      <Space>
-                        {user?.firstName}
-                        <DownOutlined />
-                      </Space>
-                    </Button>
-                  </Dropdown>
-                }
-              />
-            </Col>
-          </Row>
+          <AuthorsContextProvider>
+            <Row className={styles.eventsPageBg}>
+              <Col span={24}>
+                <Tabs
+                  defaultActiveKey="1"
+                  items={tabsItems}
+                  tabBarExtraContent={
+                    <Dropdown menu={dropDownMenu}>
+                      <Button>
+                        <Space>
+                          {user?.firstName}
+                          <DownOutlined />
+                        </Space>
+                      </Button>
+                    </Dropdown>
+                  }
+                />
+              </Col>
+            </Row>
+          </AuthorsContextProvider>
         </EventsContextProvider>
       </LocationsContextProvider>
-    </CategoryContextProvider >
+    </CategoryContextProvider>
   )
 }

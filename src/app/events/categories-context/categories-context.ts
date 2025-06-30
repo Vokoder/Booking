@@ -1,5 +1,5 @@
 import { createContext } from 'react'
-import type { Category } from '@/api/events/categiries'
+import type { Category } from '@/api/categiries'
 
 type CategoriesContextType = {
   categories: Category[] | null
