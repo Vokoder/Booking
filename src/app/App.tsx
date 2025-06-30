@@ -6,7 +6,7 @@ import { SignUpForm } from '@/pages/sign-up'
 import { SIGN_IN_URL, SIGN_UP_URL, DEFAULT_URL, PATH_NOT_FOUND_URL } from '@constants/routes'
 import { PageNotFound } from '@pages/page-not-found/not-found-page'
 import { AuthProtected, GuestProtected } from '@app/routes'
-import { EventsPage } from '@pages/events'
+import { EventsPage } from '@pages/events-page'
 import { AlertContextProvider } from '@app/alert'
 
 function App() {

@@ -10,3 +10,7 @@
   padding: 48px;
   padding-bottom: 32px;
 }
+
+body {
+  background-image: url('/Background.png');
+}

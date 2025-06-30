@@ -14,7 +14,7 @@ import type { ReactNode } from 'react'
 export interface FormFieldProps<T extends FieldValues> {
   control: Control<T>
   controllerName: Path<T>
-  label: string
+  label?: string
   required: boolean
   counter?: number
   maxLength?: number
@@ -31,9 +31,11 @@ export const FormField = <T extends FieldValues>(props: FormFieldProps<T>) => {
       render={({ field, fieldState }) => (
         <>
           <Row justify="space-between" align="middle">
-            <Col flex="auto">
-              <FormInputName name={props.label} required={props.required} />
-            </Col>
+            {props.label !== undefined && (
+              <Col flex="auto">
+                <FormInputName name={props.label} required={props.required} />
+              </Col>
+            )}
             {props.counter !== undefined && props.maxLength !== undefined && (
               <Col>
                 <Text type="secondary">

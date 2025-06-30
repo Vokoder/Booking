@@ -1,0 +1,26 @@
+.card {
+  width: 22vw;
+  height: auto;
+  border: 1px solid rgba(220, 220, 220, 1);
+  border-radius: 1vh;
+}
+
+.header {
+  padding: 1vh;
+}
+
+.footer {
+  padding: 1vh;
+}
+
+.title {
+  padding: 0px;
+  margin: 0px !important;
+}
+
+.image {
+  display: block;
+  width: 100%;
+  aspect-ratio: 2.2;
+  object-fit: cover;
+}
